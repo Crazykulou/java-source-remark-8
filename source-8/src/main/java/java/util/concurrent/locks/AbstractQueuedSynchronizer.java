@@ -1514,7 +1514,7 @@ public abstract class AbstractQueuedSynchronizer
         // before tail and on head.next being accurate if the current
         // thread is first in queue.
         Node t = tail; // Read fields in reverse initialization order
-        Node h = head;
+        Node h = head;//当前线程是队列中的第一个
         Node s;
         return h != t &&
             ((s = h.next) == null || s.thread != Thread.currentThread());

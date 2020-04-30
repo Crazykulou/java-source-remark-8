@@ -231,7 +231,7 @@ public class ReentrantLock implements Lock, java.io.Serializable {
         protected final boolean tryAcquire(int acquires) {
             final Thread current = Thread.currentThread();
             int c = getState();
-            if (c == 0) {
+            if (c == 0) {//跟非公平锁的区别就在于是否需要判断当前线程是否在队列的首位
                 if (!hasQueuedPredecessors() &&
                     compareAndSetState(0, acquires)) {
                     setExclusiveOwnerThread(current);
